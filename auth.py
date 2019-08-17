@@ -57,7 +57,6 @@ res = session.post(authorize_url,
 res.raise_for_status()  # エラーならここで例外を発生させる
 logind = BeautifulSoup(res.text, "html.parser")
 resurl = logind.find('div', class_='callback').text
-print('oauth_verifier = \'{}\''.format(resurl))
 
 
 # access_tokenとsecretの取得
@@ -67,5 +66,11 @@ get_access_token = zaim.fetch_access_token(
     url=access_token_url, verifier=oauth_verifier)
 access_token = get_access_token['oauth_token']
 access_token_secret = get_access_token['oauth_token_secret']
+
+# 結果の表示
+print()
+print('#これらをコピーしてkeys.pyに貼り付けてください')
 print('access_token = \'{}\''.format(access_token))
 print('access_token_secret = \'{}\''.format(access_token_secret))
+print('oauth_verifier = \'{}\''.format(resurl))
+print()
