@@ -1,9 +1,8 @@
 from requests_oauthlib import OAuth1Session
+from bs4 import BeautifulSoup
 import urllib.parse
 import requests
 import keys
-import re
-from bs4 import BeautifulSoup
 
 
 # メールアドレスとパスワードの指定
