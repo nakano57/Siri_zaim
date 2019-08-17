@@ -1,8 +1,18 @@
 from requests_oauthlib import OAuth1Session
 import datetime
+import sys
 import clipboard
 import webbrowser
 import keys
+
+
+def get_categories():
+    return zaim_api.get(url_category).json()
+
+
+def get_genres():
+    return zaim_api.get(url_genre).json()
+
 
 if __name__ == "__main__":
 
@@ -20,8 +30,7 @@ if __name__ == "__main__":
     access_token_secret = keys.access_token_secret
     oauth_verifier = keys.oauth_verifier
 
-
-    status ='<Response [200]>'
+    status = '<Response [200]>'
 
     zaim_api = OAuth1Session(client_key=consumer_key,
                              client_secret=consumer_secret,
@@ -33,14 +42,14 @@ if __name__ == "__main__":
 
     now = datetime.datetime.now()
     date = '{0:%Y}-{0:%m}-{0:%d}'.format(now)
-
     price = clipboard.get()
+    price = 108
     price = int(price)
 
     data = {
         'mapping': 1,
-        'category_id': 43632945,
-        'genre_id': 24135932,
+        'category_id': 199,
+        'genre_id': 10599,
         'amount': price,
         'date': date
     }
